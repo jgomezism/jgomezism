@@ -12,6 +12,9 @@
             <!-- 2nd layer -->
             <div id="title" v-bind:class="{transition1: transition1}">
                 <h1>Intelligent <span>Social Media</span></h1>
+                <p>FEATURES:</p>
+                <h2>OP<span>NET</span></h2>
+                <p class="definition">The next generation platform built for first responders</p>
                 <div v-on:click="greet" class="btn">GET STARTED</div>
             </div>
             <!-- 3rd layer -->
@@ -164,6 +167,11 @@ export default {
     // SECOND LAYER
     #title {
         z-index: -2;
+        background-image: url('../assets/tree.png');
+        background-repeat: no-repeat;
+        background-size: 250px;
+        background-position-y: bottom;
+        background-position-x: center;
         // center container
         position: absolute;
         top: 0;
@@ -188,15 +196,46 @@ export default {
         }
 
         h1 {
-            font-family: font(tFont);
+            font-family: font(sFont);
             text-transform: capitalize;
-            letter-spacing: 5px;
+            letter-spacing: 4px;
             font-size: 7vh;
             padding: 5vh 0;
             text-align: center;
             color: color(tColor);
             position: relative;
         }
+
+        h2 {
+            text-transform: uppercase;
+            color: color(highlight);
+            font-family: font(sFont);
+            font-weight: bolder;
+            letter-spacing: 4px;
+            font-size: 5vh;
+            padding: 2vh 0;
+
+            span {
+                color: color(tColor);
+                font-weight: normal;
+            }
+        }
+
+        p {
+            color: color(lGray);
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 200%;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .definition {
+            padding-bottom: 4vh;
+        }
+
+        
 
         .btn {
             font-family: font(tFont);
@@ -205,7 +244,7 @@ export default {
             border-radius: 100px;
             color: color(tColor);
             font-size: 1.5vh;
-            background-color: transparentize(color(pColor), .01);
+            background-color: transparentize(color(pColor), .4);
             letter-spacing: 3px;
             text-transform: uppercase;
             padding: 1rem;
@@ -258,16 +297,16 @@ export default {
         }
 
         h2 {
-            font-family: font(sFont);
-            font-size: 10vh;
-            letter-spacing: 3px;
             text-align: center;
-            font-weight: bolder;
-            margin: 5vh 0;
             color: color(pColor);
+            font-family: font(sFont);
+            font-weight: bolder;
+            letter-spacing: 4px;
+            font-size: 7vh;
+            margin: 5vh 0;
 
             span {
-                color: color(sColor);
+                color: color(dGray);
                 font-weight: normal;
             }
         }

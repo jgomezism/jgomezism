@@ -70,6 +70,7 @@ export default {
 	justify-content: space-between;
 	background-color: transparentize(color(pColor), .01);
 	height: 16vh;
+	z-index: 1;
 
 	@include large {
 		height: 12vh;
