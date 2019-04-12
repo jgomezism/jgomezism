@@ -6,7 +6,7 @@ Vue.config.productionTip = false
 
 //Custom Directives
 
-/* On Scroll Class Binding*/
+/* Fade In On Scroll Class Binding*/
 Vue.directive('vpshow', {
   inViewport (el) {
     var rect = el.getBoundingClientRect()

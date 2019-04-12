@@ -2,8 +2,8 @@
     <div id="action-banner">
         <h2>BE A PART OF THE OPERATION</h2>
         <div class="actions-container">
-            <router-link id="demobtn" to="/contact">Request a Demo</router-link>
-            <router-link id="contactbtn" to="/services">Contact us</router-link>
+            <router-link class="button primary-1" to="/contact">Request a Demo</router-link>
+            <router-link class="button secondary-1" to="/services">Contact us</router-link>
         </div>
     </div>
 </template>
@@ -32,27 +32,7 @@
         padding-bottom: 4vh;
 
         a {
-            font-family: font(tFont);
-            cursor: pointer;
-            border-radius: 100px;
-            font-size: 1.3vh;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            padding: 1rem;
-            text-decoration: none;
             margin: 0 1rem;
-        }
-
-        #demobtn {				
-            border: 1px solid color(tColor);
-            color: color(tColor);
-            background-color: transparentize(color(pColor), .01);
-        }
-
-        #contactbtn {
-            border: 1px solid color(pColor);
-            color: color(pColor);
-            background-color: transparentize(color(tColor), .01);
         }
     }
 }

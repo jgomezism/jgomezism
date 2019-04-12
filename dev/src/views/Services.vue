@@ -10,9 +10,9 @@
                     With the ability to share data in real time and completly secured. <br>
                     Be preapred, be ready, be <span>OPNET</span>
                 </p>
-                <router-link id="demobtn" to="/contact">Request a Demo</router-link>                
+                <router-link class="button secondary-1" to="/contact">Request a Demo</router-link>                
             </div>
-            <div id="arrows">
+            <div id="arrows" v-on:click="scrollIt('#arrows')">
                 <div id="arrow-1">
                     <div class="arrow left"></div>
                     <div class="arrow right"></div>
@@ -59,33 +59,33 @@
         </div>
         <ActionBanner/>
         <div id="features">
-            <div class="feature">
+            <div v-vpshow class="feature">
                 <h3>COMPLIANT</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut inventore, labore voluptate animi est quaerat recusandae aspernatur, odio sunt delectus voluptatem pariatur. Optio voluptas eveniet atque, quaerat aspernatur ratione nemo!</p>
+                <p>We developed OPNET to be compliant with CJIS, FIPS 140-2, ISO 27001. Auditing, accountability, access controls, authentication, encryption, storage and physical access requirements; it's all handled.</p>
                 <div></div>
             </div>
-            <div class="feature">
+            <div v-vpshow class="feature">
                 <h3>RELIABLE</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi laboriosam eum nesciunt perspiciatis consequatur voluptatem, ut aliquam alias commodi quaerat aspernatur similique, voluptatum voluptatibus aperiam esse, harum eveniet earum vero.</p>
+                <p>Each OPNET deployment is unique and segregated, only you can access your data. No hardware or software sharing, each instance is sotred on the AWS GovCloud infrastructure maximizing: availability, physical security and reliability.</p>
                 <div></div>
             </div>
-            <div class="feature">
+            <div v-vpshow class="feature">
                 <h3>SECURE</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore rem sint exercitationem tempore magnam. Distinctio saepe magni aliquid ab explicabo iusto esse. Cupiditate, at unde neque culpa excepturi praesentium blanditiis!</p>
+                <p>At ISM security comes first. We lead a proactive approach to security in storage, credentials, access, transmission and communications. Access to each platform is AES/RSA encrypted and audio/video communication tools are point-to-point encrypted. </p>
                 <div></div>
             </div>
         </div>
         <div id="partners">
             <h2>Partners</h2>
-            <div class="partner"><img src="@/assets/partners/Shield-340x180.png" alt="Shield"></div>
-            <div class="partner"><img src="@/assets/partners/EKU-justice-sm.png" alt="EKU"></div>
-            <div class="partner"><img src="@/assets/partners/EKU-sm.png" alt="EKU"></div>
-            <div class="partner"><img src="@/assets/partners/OSI-sm.png" alt="OSI"></div>
-            <div class="partner"><img src="@/assets/partners/ReadyStrong-sm.png" alt="ReadyStrong"></div>
-            <div class="partner"><img src="@/assets/partners/SDSU-HomSec-Sm.png" alt="SDSU"></div>
-            <div class="partner"><img src="@/assets/partners/SDSU-sm.png" alt="SDSU"></div>
-            <div class="partner"><img src="@/assets/partners/UL-Speed-sm.png" alt="UofL Speed"></div>
-            <div class="partner"><img src="@/assets/partners/UL_logo_fullcolor.png" alt="UofL"></div>
+            <div v-vpshow class="partner"><img src="@/assets/partners/Shield-340x180.png" alt="Shield"></div>
+            <div v-vpshow class="partner"><img src="@/assets/partners/EKU-justice-sm.png" alt="EKU"></div>
+            <div v-vpshow class="partner"><img src="@/assets/partners/EKU-sm.png" alt="EKU"></div>
+            <div v-vpshow class="partner"><img src="@/assets/partners/OSI-sm.png" alt="OSI"></div>
+            <div v-vpshow class="partner"><img src="@/assets/partners/ReadyStrong-sm.png" alt="ReadyStrong"></div>
+            <div v-vpshow class="partner"><img src="@/assets/partners/SDSU-HomSec-Sm.png" alt="SDSU"></div>
+            <div v-vpshow class="partner"><img src="@/assets/partners/SDSU-sm.png" alt="SDSU"></div>
+            <div v-vpshow class="partner"><img src="@/assets/partners/UL-Speed-sm.png" alt="UofL Speed"></div>
+            <div v-vpshow class="partner"><img src="@/assets/partners/UL_logo_fullcolor.png" alt="UofL"></div>
         </div>
         <Footer/>
     </div>
@@ -94,43 +94,45 @@
 <script>
 import ActionBanner from "@/components/ActionBanner.vue";
 import Footer from "@/components/Footer.vue";
+import { scroll } from "@/mixins/scroll.js"
 
 export default {
+    mixins: [scroll],
     data() {
-    return {
-      showDetails: false
-    };
-  },
-  components: {
-    ActionBanner,
-    Footer
-  },
-  methods: {
-      details(num) {
-        this.showDetails = true;
+        return {
+            showDetails: false
+        };
+    },
+    components: {
+        ActionBanner,
+        Footer
+    },
+    methods: {
+        details(num) {
+            this.showDetails = true;
 
-        if(num == 1) {
-            document.getElementById('service-title').innerText = 'Groups & Communities';
-            document.getElementById('service-description').innerText = "Shared interests, incident management, circles of excellence, general preparedness. Users can find and join groups, share media and documents, participate in forums. Premium users can create public, private and hidden groups.";
-        }
-        else if(num == 2) {
-            document.getElementById('service-title').innerText = 'Secure Document Sharing';
-            document.getElementById('service-description').innerText = "Documents are essential for operational fluidity and continuity. Plans, schematics, images, procedures, videos and more – Our platform handles documents of all types while giving users the ability to share and store documents securely.";
-        }
-        else if(num == 3) {
-            document.getElementById('service-title').innerText = 'Library';
-            document.getElementById('service-description').innerText = "A repository of specialized documents and files curated by subject matter experts. Our library serves as a knowledgebase filled with entries by members of the site and experts in their fields. These documents are a simple search away for members and can have different levels of permission-based accesses applied.";
-        }
-        else if(num == 4) {
-            document.getElementById('service-title').innerText = 'Chat and Video Chat';
-            document.getElementById('service-description').innerText = "Communicate in real-time with others in your network. From the desktop or our mobile app, stay in touch through standard chat, chat rooms and stunning video chat. Whether it is a simple “hello”, or a location scan for situational awareness, our platform allows you stay connected to your network.";
-        }
-        else if(num == 5) {
-            document.getElementById('service-title').innerText = 'Real-Time Collaboration';
-            document.getElementById('service-description').innerText = "Whether it is for operational readiness, incident response, sharing of best practices or group communication, real-time collaboration is critical. Our platform and tools are built with collaboration as our number one priority.";
+            if(num == 1) {
+                document.getElementById('service-title').innerText = 'Groups & Communities';
+                document.getElementById('service-description').innerText = "Shared interests, incident management, circles of excellence, general preparedness. Users can find and join groups, share media and documents, participate in forums. Premium users can create public, private and hidden groups.";
+            }
+            else if(num == 2) {
+                document.getElementById('service-title').innerText = 'Secure Document Sharing';
+                document.getElementById('service-description').innerText = "Documents are essential for operational fluidity and continuity. Plans, schematics, images, procedures, videos and more – Our platform handles documents of all types while giving users the ability to share and store documents securely.";
+            }
+            else if(num == 3) {
+                document.getElementById('service-title').innerText = 'Library';
+                document.getElementById('service-description').innerText = "A repository of specialized documents and files curated by subject matter experts. Our library serves as a knowledgebase filled with entries by members of the site and experts in their fields. These documents are a simple search away for members and can have different levels of permission-based accesses applied.";
+            }
+            else if(num == 4) {
+                document.getElementById('service-title').innerText = 'Chat and Video Chat';
+                document.getElementById('service-description').innerText = "Communicate in real-time with others in your network. From the desktop or our mobile app, stay in touch through standard chat, chat rooms and stunning video chat. Whether it is a simple “hello”, or a location scan for situational awareness, our platform allows you stay connected to your network.";
+            }
+            else if(num == 5) {
+                document.getElementById('service-title').innerText = 'Real-Time Collaboration';
+                document.getElementById('service-description').innerText = "Whether it is for operational readiness, incident response, sharing of best practices or group communication, real-time collaboration is critical. Our platform and tools are built with collaboration as our number one priority.";
+            }
         }
     }
-  }
 }
 </script>
 
@@ -194,26 +196,17 @@ export default {
 
         a {
             display: inline-flex;
-            font-family: font(tFont);
-            cursor: pointer;
-            border-radius: 100px;
-            font-size: 1.3vh;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            padding: 1rem;
-            text-decoration: none;
             margin: 7vh 1rem;
-            color: color(pColor);
-            background-color: transparentize(color(tColor), .01);
         }
     }
 
     #arrows {
         position: absolute;
-        bottom: 5vh;
+        bottom: 8vh;
         display: flex;
         flex-flow: column;
         align-self: center;
+        cursor: pointer;
 
         div {
             display: flex;
@@ -430,7 +423,9 @@ export default {
 #features {
     display: flex;
     flex-wrap: wrap;
-    padding: 0 5vw;
+    padding: 5vw;
+
+    @include medium { padding: 10vh 5vw; }
 
     .feature {
         display: flex;
@@ -474,14 +469,15 @@ export default {
         text-align: center;
         text-transform: uppercase;
         letter-spacing: 4px;
-        font-size: 2vh;
+        font-size: 3vh;
         color: color(pColor);
         padding: 4vh 0;
     }
 
     .partner {
-        height: 150px;
-        width: 150px;
+        height: 160px;
+        width: 160px;
+        padding: 20px;
         display: flex;
         background-color: #FFF;
 

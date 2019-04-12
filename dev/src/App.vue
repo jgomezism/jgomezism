@@ -26,8 +26,8 @@
 			</div>
 			<div class="actions-container">
 				<ul class="actions">
-					<li><router-link id="demobtn" to="/contact">Request a Demo</router-link></li>
-					<li><router-link id="contactbtn" to="/contact">Contact Us</router-link></li>
+					<li><router-link class="button primary-1" to="/contact">Request a Demo</router-link></li>
+					<li><router-link class="button secondary-1" to="/contact">Contact Us</router-link></li>
 				</ul>
 			</div>
     </nav>
@@ -196,7 +196,24 @@ export default {
 			0%   {transform: translateX(100%)}
 			100% {transform: translateX(0)}
 		}
-	}
+
+		a {			
+			color: color(tColor);
+			text-decoration: none;
+			font-family: font(pFont);
+			letter-spacing: 3px;
+			text-transform: uppercase;
+			font-size: 16px;
+
+			&.router-link-exact-active.router-link-active {
+				color: color(highlight);
+			}
+
+			&:hover {
+				color: color(lGray);
+			}
+		}
+	}	
 
 	.actions-container {
 		height: 30%;
@@ -213,44 +230,62 @@ export default {
 			li {
 				margin: 6vh 0;
 			}
+		}
+	}
+}
 
-			a {
-				font-family: font(tFont);
-				cursor: pointer;
-				border: 1px solid color(tColor);
-				border-radius: 100px;
-				font-size: 1.3vh;
-				letter-spacing: 3px;
-				text-transform: uppercase;
-				padding: 1rem;
-			}
+.button {
+	font-family: font(tFont);
+	cursor: pointer;
+	border-radius: 100px;
+	font-size: 1.4vh;
+	font-weight: bold;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	padding: 1rem;
+	text-decoration: none;
+	transition: all 550ms ease;
+    will-change: background-color, color;
 
-			#demobtn {				
-				color: color(tColor);
-				background-color: transparentize(color(pColor), .5);
-			}
+	&.primary-1 {
+		border: 1px solid color(tColor);
+		background-color: transparent;
+		color: color(tColor);
 
-			#contactbtn {
-				color: color(pColor);
-				background-color: transparentize(color(tColor), .01);
-			}
+		&:hover {
+			background-color: color(highlight);
+			color: color(pColor);
 		}
 	}
 
-	a {			
-		color: color(tColor);
-		text-decoration: none;
-		font-family: font(tFont);
-		letter-spacing: 3px;
-		text-transform: capitalize;
-		font-size: 20px;
-
-		&.router-link-exact-active.router-link-active {
-			color: color(highlight);
-		}
+	&.primary-2 {
+		border: 1px solid color(pColor);
+		background-color: transparent;
+		color: color(pColor);
 
 		&:hover {
-			color: color(lGray);
+			background-color: color(highlight);
+			color: color(pColor);
+		}
+	}
+
+	&.secondary-1 {
+		background-color: color(tColor);
+		color: color(pColor);
+
+		&:hover {
+			background-color: color(dGray);
+			color: color(tColor);
+		}
+	}
+
+	&.secondary-2 {
+		background-color: color(pColor);
+		color: color(tColor);
+
+		&:hover {
+			background-color: color(dGray);
+			color: color(tColor);
 		}
 	}
 }

@@ -53,8 +53,8 @@
                     Join us and bring your team to the next level
                 </div>
                 <div class="actions-container">
-                    <router-link id="demobtn" to="/contact">Request a Demo</router-link>
-                    <router-link id="contactbtn" to="/services">Learn More</router-link>
+                    <router-link class="button secondary-2" to="/contact">Request a Demo</router-link>
+                    <router-link class="button primary-2" to="/services">Learn More</router-link>
                 </div>
             </div>
         </header>
@@ -383,27 +383,7 @@ export default {
             justify-content: center;
 
             a {
-                font-family: font(tFont);
-                cursor: pointer;
-                border-radius: 100px;
-                font-size: 1.3vh;
-                letter-spacing: 3px;
-                text-transform: uppercase;
-                padding: 1rem;
-                text-decoration: none;
                 margin: 0 1rem;
-            }
-
-            #demobtn {				
-                border: 1px solid color(tColor);
-                color: color(tColor);
-                background-color: transparentize(color(pColor), .01);
-            }
-
-            #contactbtn {
-                border: 1px solid color(pColor);
-                color: color(pColor);
-                background-color: transparentize(color(tColor), .01);
             }
         }
     }
