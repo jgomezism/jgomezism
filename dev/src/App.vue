@@ -3,7 +3,7 @@
     <!-- Navigation Bar -->
     <nav id="navbar">
       <router-link to="/" id="home-logo">
-        <img src="@/assets/iso.svg" alt="iso">
+        <img src="@/assets/logo-white.png" alt="iso" v-on:click="displayMenu = false">
       </router-link>
       <div id="menuicon" v-bind:class="{ active: displayMenu }" v-on:click="displayMenu = !displayMenu">
 				<div id="bar1" class="bar"></div>
@@ -16,18 +16,17 @@
     <nav id="menu" v-if="displayMenu" v-on:click="displayMenu = !displayMenu">
 			<div class="links-container">
 				<ul class="links">
-					<li><router-link to="/">Home</router-link></li>
-					<li><router-link to="/services">Services</router-link></li>
-					<li><router-link to="/cases">Use Cases</router-link></li>
-					<li><router-link to="/docs">Documents</router-link></li>
-					<li><router-link to="/us">Our Team</router-link></li>
-					<li><router-link to="/contact">Contact</router-link></li>
+					<li><router-link to="/services">Services</router-link><p>Our Value</p></li>
+					<li><router-link to="/cases">Use Cases</router-link><p>Our Mission</p></li>
+					<li><router-link to="/docs">Documents</router-link><p>Our Research</p></li>
+					<li><router-link to="/us">Evolution</router-link><p>Our History</p></li>
+					<li><router-link to="/contact">Contact</router-link><p>Our Team</p></li>
 				</ul>
 			</div>
 			<div class="actions-container">
 				<ul class="actions">
 					<li><router-link class="button primary-1" to="/contact">Request a Demo</router-link></li>
-					<li><router-link class="button secondary-1" to="/contact">Contact Us</router-link></li>
+					<!-- <li><router-link class="button secondary-1" to="/contact">Contact Us</router-link></li> -->
 				</ul>
 			</div>
     </nav>
@@ -64,26 +63,21 @@ export default {
 }
 
 #navbar {
-	position: sticky;
+	position: fixed;
+	width: 100%;
 	top: 0;
 	display: flex;
 	justify-content: space-between;
-	background-color: transparentize(color(pColor), .01);
-	height: 16vh;
-	z-index: 1;
-
-	@include large {
-		height: 12vh;
-	}
+	background-color: transparent;
+	z-index: 2;
+	height: 12vh;
 
 	#home-logo {
 		margin: 0 1.5rem;
-		padding: 0 1rem;
 		align-self: center;
 
 		img {
 			height: 3.5rem;
-			filter: invert(1);
 		}
 	}	
 
@@ -98,7 +92,6 @@ export default {
 		background-color: color(tColor);
 		cursor: pointer;
 		position: relative;
-		z-index: 1;
 
 		&::before {
 			background-color: transparent;
@@ -146,7 +139,7 @@ export default {
 
 #menu {
 	position: fixed;
-	top: 16vh;
+	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
@@ -156,10 +149,6 @@ export default {
 	justify-content: center;
 	overflow: hidden;
 	z-index: 1;
-
-	@include large {
-		top: 12vh;
-	}
 
 	div {
 		display: flex;
@@ -188,9 +177,9 @@ export default {
 	}
 
 	.links-container {
-		height: 70%;
-		background-color: transparentize(color(sColor), .025);
+		height: 100%;
 		animation: slide-left 300ms ease 1 both;
+		background-color: transparentize(color(pColor), .025);
 
 		@keyframes slide-left {
 			0%   {transform: translateX(100%)}
@@ -201,9 +190,10 @@ export default {
 			color: color(tColor);
 			text-decoration: none;
 			font-family: font(pFont);
-			letter-spacing: 3px;
+			font-weight: 800;
+			letter-spacing: 1px;
 			text-transform: uppercase;
-			font-size: 16px;
+			font-size: 3.5vh;
 
 			&.router-link-exact-active.router-link-active {
 				color: color(highlight);
@@ -213,12 +203,21 @@ export default {
 				color: color(lGray);
 			}
 		}
+
+		p {
+			color: color(mGray);
+			margin-top: 5px;
+		}
 	}	
 
 	.actions-container {
-		height: 30%;
-		background-color: opacify(color(pColor), .5);
-		animation: slide-up 300ms ease 1 both;
+		position: absolute;
+		bottom: 0;
+		height: 20%;
+		width: 100%;
+		// clip-path: polygon(50% 0%, 100% 80%, 100% 100%, 0 100%, 0 80%);
+		// background-color: opacify(color(pColor), .5);
+		// animation: slide-up 300ms ease 1 both;
 
 		@keyframes slide-up {
 			0%   {transform: translateY(100%)}
@@ -226,7 +225,8 @@ export default {
 		}
 
 		.actions {
-
+			align-self: flex-end;
+			
 			li {
 				margin: 6vh 0;
 			}
@@ -239,7 +239,6 @@ export default {
 	cursor: pointer;
 	border-radius: 100px;
 	font-size: 1.4vh;
-	font-weight: bold;
 	letter-spacing: 3px;
 	text-transform: uppercase;
 	padding: 1rem;

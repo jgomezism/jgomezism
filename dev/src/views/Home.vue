@@ -1,8 +1,8 @@
 <template>
     <div id="home">
         <header id="main-banner">
-            <!-- 1st layer -->
-            <div class="video-container" v-bind:class="{skipped: skipped}">
+            <!-- video layer -->
+            <div v-if="play" class="video-container" v-bind:class="{skipped: skipped}">
                 <video muted autoplay id="main-video">
                     <source src="@/assets/vid1.mp4" type="video/mp4">
                     Your browser does not support HTML5 video.
@@ -14,6 +14,7 @@
                 <h1>Intelligent <span>Social Media</span></h1>
                 <p>FEATURES:</p>
                 <h2>OP<span>NET</span></h2>
+                <img src="@/assets/iso.svg" alt="OPNET iso">
                 <p class="definition">The next generation platform built for first responders</p>
                 <div v-on:click="greet" class="btn">GET STARTED</div>
             </div>
@@ -22,32 +23,43 @@
             <!-- Main Content -->
             <div id="main-content" v-if="displayContent">
                 <h2>OP<span>NET</span></h2>
+                <div id="loading-bar" v-bind:class="{ loading: load }"></div>
+                <div id="text-shadow">Ready & Strong</div>
                 <div id="services">
-                    <div class="service">
-                        <div class="icon"><i class="fas fa-users fa-2x"></i></div>
+                    <div class="service" v-bind:class="{ active: slide == 1, left: slide > 1}">
+                        <div class="icon"><img src="@/assets/services/fam.png" alt="service icon"></div>
                         <div class="title">Groups and Communities</div>
                         <div class="description">Shared interests, incident management, circles of excellence, general preparedness</div>
                     </div>
-                    <div class="service">
-                        <div class="icon"><i class="fas fa-file-alt fa-2x"></i></div>
+                    <div class="service" v-bind:class="{ active: slide == 2, left: slide > 2}">
+                        <div class="icon"><img src="@/assets/services/folder.png" alt="service icon"></div>
                         <div class="title">Secure Document Sharing</div>
                         <div class="description">Handle plans, schemetics, images, procedures, videos, and more</div>
                     </div>
-                    <div class="service">
-                        <div class="icon"><i class="fas fa-stopwatch fa-2x"></i></div>
+                    <div class="service" v-bind:class="{ active: slide == 3, left: slide > 3}">
+                        <div class="icon"><img src="@/assets/services/realtime.png" alt="service icon"></div>
                         <div class="title">Real-Time Collaboration</div>
                         <div class="description">Whether it is for operational readiness, incident response, sharing or group communication</div>
                     </div>
-                    <div class="service">
-                        <div class="icon"><i class="fas fa-comments fa-2x"></i></div>
+                    <div class="service" v-bind:class="{ active: slide == 4, left: slide > 4}">
+                        <div class="icon"><img src="@/assets/services/comms.png" alt="service icon"></div>
                         <div class="title">Chat and Video Chat</div>
                         <div class="description">Through your desktop, pad or mobile, stay connected</div>
                     </div>
-                    <div class="service">
-                        <div class="icon"><i class="fas fa-book fa-2x"></i></div>
+                    <div class="service" v-bind:class="{ active: slide == 5, left: slide > 5}">
+                        <div class="icon"><img src="@/assets/services/docs.png" alt=""></div>
                         <div class="title">Dedicated Documentation</div>
                         <div class="description">Simplle search and assignable levels of permission-based access</div>
                     </div>
+                </div>
+                <div id="carousel-index">
+                    <button v-on:click="prevSlide"><i class="fas fa-angle-left"></i></button>
+                    <div v-on:click="slide = 1" v-bind:class="{ active: slide == 1}"></div>
+                    <div v-on:click="slide = 2" v-bind:class="{ active: slide == 2}"></div>
+                    <div v-on:click="slide = 3" v-bind:class="{ active: slide == 3}"></div>
+                    <div v-on:click="slide = 4" v-bind:class="{ active: slide == 4}"></div>
+                    <div v-on:click="slide = 5" v-bind:class="{ active: slide == 5}"></div>
+                    <button v-on:click="nextSlide"><i class="fas fa-angle-right"></i></button>
                 </div>
                 <div id="text">
                     Join us and bring your team to the next level
@@ -67,13 +79,26 @@ import AnimatedContainer from "@/components/AnimatedContainer.vue";
 export default {
   data() {
     return {
-      transition1: false,
-      displayContent: false,
-      skipped: false
+        play: false,
+        transition1: false,
+        displayContent: false,
+        skipped: false,
+        slide: 1,
+        timer: true,
+        load: false
     };
   },
   components: {
-      AnimatedContainer
+    AnimatedContainer
+  },
+  watch: {
+      displayContent(){
+        this.interval = setInterval(() => this.nextSlide(), 4000);
+        this.load = true;
+      }
+  },
+  beforeDestroy () {
+    clearInterval(this.interval);
   },
   mounted: function() {
     let container = document.getElementById('animated-container');
@@ -92,6 +117,35 @@ export default {
         });
         this.transition1 = true;
         this.displayContent = true;
+    },
+    nextSlide() {
+        if (this.slide == 5) {
+            this.slide = 1;
+        }
+        else {
+            this.slide = this.slide + 1;
+        }
+        this.resetTimer();
+    },
+    prevSlide() {
+        if (this.slide == 1) {
+            this.slide = 5;
+        }
+        else {
+            this.slide = this.slide - 1;
+        }
+        this.resetTimer();
+    },
+    resetTimer(){
+        clearInterval(this.interval);
+        this.interval = setInterval(() => this.nextSlide(), 4000);
+        this.restartLoad();
+    },
+    restartLoad(){
+        let bar = document.getElementById("loading-bar");
+        bar.classList.remove("loading");
+        void bar.offsetWidth;
+        bar.classList.add("loading");
     }
   }
 };
@@ -105,7 +159,7 @@ export default {
 @import "../stylesheets/fonts";
 
 #main-banner {
-    // FIRST LAYER
+    // VIDEO LAYER
     .video-container {
         background-color: color(pColor);
         // center container
@@ -221,6 +275,12 @@ export default {
             }
         }
 
+        img {
+            filter: invert(1);
+            height: 10vh;
+            margin-bottom: 2vh;
+        }
+
         p {
             color: color(lGray);
             font-size: 12px;
@@ -269,6 +329,7 @@ export default {
         z-index: -3;
         display: flex;
         overflow: hidden;
+        background-color: #2e2e2e;
 
         div {
             height: 100%;
@@ -289,7 +350,12 @@ export default {
         display: flex;
         flex-flow: column;
         justify-content: center;
-        animation: fade-in 800ms ease 1s both;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        animation: fade-in 300ms ease 1s both;
 
         @keyframes fade-in {
             0% {opacity: 0;}
@@ -297,37 +363,106 @@ export default {
         }
 
         h2 {
+            position: absolute;
+            top: 12vh;
+            align-self: center;
             text-align: center;
             color: color(pColor);
-            font-family: font(sFont);
+            font-family: font(tFont);
             font-weight: bolder;
             letter-spacing: 4px;
             font-size: 7vh;
             margin: 5vh 0;
 
             span {
-                color: color(dGray);
+                color: color(tColor);
                 font-weight: normal;
             }
         }
 
+        #loading-bar {
+            position: absolute;
+            top: 27vh;
+            align-self: center;
+            border: .5px solid color(tColor);
+            border-radius: 100px;
+            width: 50vw;
+            height: 6px;
+
+            &.loading {
+                &::after {
+                    content: '';
+                    background-color: color(tColor); 
+                    position: absolute;
+                    top:0;
+                    bottom: 0;
+                    left: 0;
+                    animation: load 4000ms linear infinite both;
+    
+                    @keyframes load {
+                        0% {width: 0}
+                        100% {width: 100%}
+                    }
+                }
+            }
+
+        }
+
+        #text-shadow {
+            position: absolute;
+            top: 12vh;
+            align-self: center;
+            text-align: center;
+            font-family: font(pFont);
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 9vh;
+            color: transparentize($color: color(tColor), $amount: .85);
+            z-index: -1;
+        }
+
         #services {
-            display: flex;
-            height: max-content;
-            overflow-x: auto;
-            overflow-y: hidden;
-            margin: 3vh 5vw 1vh 5vw;
-            padding: 0 5vw 5vh 5vw;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -2;
+            overflow-x: hidden;
+
+            @for $i from 1 through 5 {
+                .service {
+                    &:nth-child(#{$i}) {
+                        background-color: color($i);
+					}
+				}
+			}
 
             .service {
                 display: flex;
                 flex-flow: column;
                 text-align: center;
-                margin: 0 7%;
-                min-width: 85%;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                overflow-x: hidden;
+                transform: translateX(100%);
+                will-change: transform;
+                transition: transform 550ms ease;
 
-                @include large {
-                    min-width: 20%;
+                &.left {
+                    transform: translateX(-100%);
+                    will-change: transform;
+                    transition: transform 550ms ease;
+                }
+
+                &.active {
+                    transform: translateX(0);
+                }
+
+                div {
+                    align-self: center;
                 }
 
                 .icon {
@@ -335,11 +470,8 @@ export default {
                     display: flex;
                     justify-content: center;
 
-                    i {
-                        height: 60px;
-                        width: 60px;
-                        border-radius: 100px;
-                        border: 4px solid color(sColor);
+                    img {
+                        height: 18vh;
                         align-self: center;
                         display: flex;
                         justify-content: center;
@@ -361,24 +493,90 @@ export default {
                     text-transform: uppercase;
                     font-size: 1.3vh;
                     letter-spacing: 2.5px;
-                    color: color(sColor);
+                    color: color(lGray);
                     text-align: center;
                     line-height: 200%;
+                    padding: 0 10vw;
                 }
             }
 
         }
 
+        #carousel-index {
+            display: flex;
+            position: absolute;
+            bottom: 25vh;
+            align-self: center;
+
+            button {
+                align-self: center;
+                height: 30px;
+                width: 30px;
+                margin: 0 4vw;
+                border: none;
+                border-radius: 100px;
+                background-color: color(tColor);
+                cursor: pointer;
+
+                &:hover {
+                    background-color: color(lGray);
+                }
+
+                &:focus {
+                    outline: none;
+                }
+
+                i {
+                    color: color(pColor);
+                }
+            }
+
+            div {
+                align-self: center;
+                margin: 0 2vw;
+                height: 10px;
+                width: 10px;
+                border: 1px solid color(lGray);
+                border-radius: 100px;
+                cursor: pointer;
+                position: relative;
+
+                &::after {
+                    content: '';
+                    background-color: color(lGray);
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 100px;
+                    transform: scale(0);
+                    will-change: transform;
+                    transition: transform 350ms ease;
+                }
+
+                &.active {
+                    &::after {
+                        transform: scale(1);
+                    }
+                }
+            }
+        }
+
         #text {
-            margin: 5vh;
+            position: absolute;
+            bottom: 12vh;
+            align-self: center;
+            padding: 5vh;
             text-transform: uppercase;
             font-size: 1vh;
             letter-spacing: 3px;
-            color: color(dGray);
+            color: color(lGray);
             text-align: center;
         }
 
         .actions-container {
+            position: absolute;
+            bottom: 7vh;
+            align-self: center;
             display: flex;
             justify-content: center;
 

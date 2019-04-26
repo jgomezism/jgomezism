@@ -12,7 +12,7 @@
                 </p>
                 <router-link class="button secondary-1" to="/contact">Request a Demo</router-link>                
             </div>
-            <div id="arrows" v-on:click="scrollIt('#arrows')">
+            <div id="arrows" v-on:click="scrollIt('#services-tree')">
                 <div id="arrow-1">
                     <div class="arrow left"></div>
                     <div class="arrow right"></div>
@@ -141,15 +141,11 @@ export default {
 // Theme
 @import "../stylesheets/theme";
 #banner{
-    height: 84vh;
+    height: 100vh;
     background-image: radial-gradient(color(pColor), darken(color(pColor), 10%));
     display: flex;
     flex-flow: column;
     justify-content: center;
-
-    @include large {
-        height: 88vh;
-    }
 
     #content {
         align-self: center;
@@ -207,6 +203,13 @@ export default {
         flex-flow: column;
         align-self: center;
         cursor: pointer;
+        animation: updown 900ms ease 350ms infinite both;
+
+        @keyframes updown {
+            0%   {transform: translateY(-50%);}
+            50% {transform: translateY(0);}
+            100% {transform: translateY(-50%);}
+        }
 
         div {
             display: flex;
@@ -230,7 +233,7 @@ export default {
 }
 
 #services-tree {
-    min-height: 75vh;
+    min-height: 100vh;
     background-image: radial-gradient(color(tColor), color(lGray)), url('../assets/tree2.png');
     background-blend-mode: difference;
     background-position: center;
@@ -375,10 +378,9 @@ export default {
         }
 
         .btn.close {
-
             position: absolute;
-            right: 5vw;
-            top: 5vh;
+            align-self: center;
+            bottom: 5vh;
             cursor: pointer;
             height: 20px;
             width: 20px;

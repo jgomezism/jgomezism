@@ -1,5 +1,5 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800|Raleway');
 
 $fonts: (
   pFont: "Open Sans",
@@ -11,6 +11,30 @@ $fonts: (
   @return map-get($fonts, $font-name);
 }
 
+// Core ISM color palette (Blues)
+
+// #1f397f - Dark Blue (Core color)
+// #8baaff - Light Blue (use for highlights)
+// #3f71ff - Vibrant Blue (use for actions)
+// #46557f - Blue Gray (Core Color)
+// #325bcc - Blue (Core Color)
+
+// ISM Grays (Use for structure and depth)
+
+// #3c3d3f - Mid Gray
+// #797b7f - Core Gray
+// #f3f7ff - White Gray
+// #3d3e40 - Dark Gray
+// #dbdee5 - Light Gray
+
+// ISM Message, Alert and Button palette (Use white text over)
+
+// #00b271 - Green (Success)
+// #17bfe5 - Light Blue (workflow, secondary)
+// #1f444c - Dark Blue/Green (workflow, primary)
+// #bc342f - Red (error/warning, primary)
+// #c61759 - Vibrant Red (error/warning, secondary)
+
 // Colors
 $colors: (
   pColor: #1f397f,
@@ -19,7 +43,13 @@ $colors: (
   highlight: #8baaff,
   action: #3f71ff,
   lGray: #dbdee5,
-  dGray: #3d3e40
+  mGray: #777,
+  dGray: #3d3e40,
+  1: #8baaff,
+  2: #3f71ff,
+  3: #46557f,
+  4: #325bcc,
+  5: #17bfe5
 );
 
 @function color($color-name) {
