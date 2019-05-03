@@ -12,7 +12,7 @@
                 </p>
                 <router-link class="button secondary-1" to="/contact">Request a Demo</router-link>                
             </div>
-            <div id="arrows" v-on:click="scrollIt('#services-tree')">
+            <div id="arrows" v-on:click="scrollIt(`#services-tree`)">
                 <div id="arrow-1">
                     <div class="arrow left"></div>
                     <div class="arrow right"></div>
@@ -233,7 +233,7 @@ export default {
 }
 
 #services-tree {
-    min-height: 100vh;
+    min-height: 80vh;
     background-image: radial-gradient(color(tColor), color(lGray)), url('../assets/tree2.png');
     background-blend-mode: difference;
     background-position: center;

@@ -14,22 +14,26 @@
 #action-banner {
     // background-color: color(pColor);
     background-image: radial-gradient(color(pColor), darken(color(pColor), 10%));
-
+    height: 20vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    
     h2 {
         color: color(lGray);
         font-family: font(sFont);
         text-transform: uppercase;
         letter-spacing: 2px;
-        font-size: 18px;
-        padding: 4vh;
+        font-size: 16px;
+        padding-bottom: 3vh;
         text-align: center;
-        line-height: 150%;
+        align-self: center;
     }
 
     .actions-container {
         display: flex;
         justify-content: center;
-        padding-bottom: 4vh;
+        align-self: center;
 
         a {
             margin: 0 1rem;

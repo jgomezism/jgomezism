@@ -138,7 +138,7 @@ export default {
     },
     resetTimer(){
         clearInterval(this.interval);
-        this.interval = setInterval(() => this.nextSlide(), 4000);
+        this.interval = setInterval(() => this.nextSlide(), 5000);
         this.restartLoad();
     },
     restartLoad(){
@@ -387,7 +387,7 @@ export default {
             border: .5px solid color(tColor);
             border-radius: 100px;
             width: 50vw;
-            height: 6px;
+            height: 5px;
 
             &.loading {
                 &::after {
@@ -397,7 +397,7 @@ export default {
                     top:0;
                     bottom: 0;
                     left: 0;
-                    animation: load 4000ms linear infinite both;
+                    animation: load 5000ms linear infinite both;
     
                     @keyframes load {
                         0% {width: 0}

@@ -9,7 +9,7 @@
                 <p> and they work</p>
             </div>
             <div id="cases-list">
-                <h2>LE Missions</h2>
+                <h2>Law Enforcement Missions</h2>
                 <!-- MAKE IT SCROLL TO THE TOP OF THE SCREEN WHEN CLICKED! -->
                 <ul id="le">
                     <li class="button secondary-1" v-on:click="cases(1)">Daily Operations</li>
@@ -76,7 +76,7 @@ export default {
 
             if(num == 1) {
                 document.getElementById("case-title").innerText = "Daily Operations";
-                document.getElementById("case-challenge").innerText = "Managing Intelligence/ ILP / Investigations/ Tactical Operations";
+                document.getElementById("case-challenge").innerText = "Managing Intelligence, ILP, Investigations, and Tactical Operations";
                 document.getElementById("case-solution").innerText = "A Secure, Scalable Cyber Platform that eliminates the learning curve for most officers and personnel creates a more effective and efficient work force. Most people are familiar and competent on some level of social media platform. Because of this social-cultural dynamic, Opnet has very little learning curve and will be in use and effective almost immediately.​";
                 document.getElementById("case-input").innerText = "Opnet allows all officers and personnel to maintain total situational awareness 24/7. Agencies are realizing that the time saved by empowering officers before they ever have to stand for briefings, roll-call or other information events, actually saves money, time and even allows the platform to pay for itself!​";
                 document.getElementById("case-content").innerText = "- Real-Time Collaboration, information sharing and operations support - all in one application. EOC, TOC, NIMS/ICS, Command, Planning, Intelligence, Investigations, Patrol... Visualize and make real-time roll-call and briefings, saving time, money and enhancing focus, efficiency and budget support.- Federal Level Security and Real-Time monitoring in support of cyber-security that meet and exceed industry standards. Includes GovCloud operations.- Data and information tempo acceleration means cost saving, increased operational efficiency and effectiveness.";
@@ -274,7 +274,7 @@ export default {
         align-self: center;
         position: relative;
         background-color: color(tColor);
-        width: 80vw;
+        width: 85vw;
         margin: 15vh 0 5vh 0;
         border-radius: 20px;
         padding: 5%;
@@ -321,16 +321,20 @@ export default {
         h2, h3 {
             text-transform: uppercase;
             font-size: 16px;
-            letter-spacing: 3px;
             color: color(pColor);
             text-align: center;
-            margin-bottom: 4vh;
+            margin-bottom: 2vh;
             padding: 0 5%;
             cursor: pointer;
         }
 
         h2 {
+            letter-spacing: 3px;
             padding: 0 15%;
+        }
+
+        h3 {
+            letter-spacing: 2px;
         }
 
         p {
@@ -338,13 +342,13 @@ export default {
             font-size: 12px;
             letter-spacing: 1px;
             text-align: center;
-            line-height: 250%;
-            font-weight: bold;
+            line-height: 200%;
         }
     }
 
     #case-title {
         font-size: 18px;
+        font-weight: 800;
         margin: 4vh;
     }
     #case-challenge {
@@ -375,7 +379,6 @@ export default {
         letter-spacing: 1px;
         text-align: start;
         line-height: 200%;
-        font-weight: bold;
 
         strong {
             color: #000;
@@ -386,9 +389,14 @@ export default {
         list-style: none;
         justify-content: center;
 
+        a {
+            display: flex;
+        }
+
         img {
             width: 60px;
-            padding: 10px;
+            height: 60px;
+            margin: 10px;
         }
     }
 }
