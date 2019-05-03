@@ -12,7 +12,7 @@
                 </p>
                 <router-link class="button secondary-1" to="/contact">Request a Demo</router-link>                
             </div>
-            <div id="arrows" v-on:click="scrollIt(`#services-tree`)">
+            <div id="arrows" v-on:click="scroll">
                 <div id="arrow-1">
                     <div class="arrow left"></div>
                     <div class="arrow right"></div>
@@ -108,6 +108,9 @@ export default {
         Footer
     },
     methods: {
+        scroll(){
+            this.scrollIt("#services-tree");
+        },
         details(num) {
             this.showDetails = true;
 

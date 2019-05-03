@@ -41,5 +41,8 @@ export default new Router({
       name: "docs",
       component: () => import("./views/Docs.vue")
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 });

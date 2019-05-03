@@ -4,13 +4,12 @@
             <div id="catch">
                 <h2>We understand the challenges and provide the solutions</h2>
                 <p>We've been there</p>
-                <p>We not only came up with the solutions</p>
-                <p>We have tested them</p>
+                <p>And We not only came up with the solutions,</p>
+                <p>We have try them out</p>
                 <p> and they work</p>
             </div>
             <div id="cases-list">
                 <h2>Law Enforcement Missions</h2>
-                <!-- MAKE IT SCROLL TO THE TOP OF THE SCREEN WHEN CLICKED! -->
                 <ul id="le">
                     <li class="button secondary-1" v-on:click="cases(1)">Daily Operations</li>
                     <li class="button secondary-1" v-on:click="cases(2)">Information & Special Operations</li>
@@ -29,11 +28,22 @@
             <div class="container">
                 <div class="btn close" v-on:click="showCase = !showCase"><div></div><div></div></div>
                 <h2 id="case-title"></h2>
+                <div id="case-image">
+                    <img v-show="case1" src="@/assets/cases/dailyops.png" alt="Checklist">
+                    <img v-show="case2" src="@/assets/cases/specialops.png" alt="Special ops team">
+                    <img v-show="case3" src="@/assets/cases/multi.png" alt="Several officers lined up">
+                    <img v-show="case4" src="@/assets/cases/collab.png" alt="Handshake">
+                    <img v-show="case5" src="@/assets/cases/datashare.png" alt="Network diagram">
+                    <img v-show="case6" src="@/assets/cases/border.png" alt="Police car">
+                    <img v-show="case7" src="@/assets/cases/franchise.png" alt="Tablet">
+                </div>
                 <h3>Challenge</h3>
                 <p id="case-challenge"></p>
                 <p id="case-input"></p>
                 <h3>Solution</h3>
                 <p id="case-solution"></p>
+                <!-- screenshot of the app -->
+                <!-- <div id="case-solution-image"></div> -->
                 <p id="case-content"></p>
                 <h3>Mission Goals and Objectives</h3>
                 <ul id="case-mission"></ul>
@@ -62,7 +72,14 @@ export default {
     mixins: [scroll],
     data() {
         return {
-            showCase: false
+            showCase: false,
+            case1: false,
+            case2: false,
+            case3: false,
+            case4: false,
+            case5: false,
+            case6: false,
+            case7: false
         };
     },
     components: {
@@ -71,10 +88,18 @@ export default {
     },
     methods: {
         cases(num) {
+            this.case1 = false;
+            this.case2 = false;
+            this.case3 = false;
+            this.case4 = false;
+            this.case5 = false;
+            this.case6 = false;
+            this.case7 = false;
             this.showCase = true;
             this.scrollIt("#case");
 
             if(num == 1) {
+                this.case1 = true;
                 document.getElementById("case-title").innerText = "Daily Operations";
                 document.getElementById("case-challenge").innerText = "Managing Intelligence, ILP, Investigations, and Tactical Operations";
                 document.getElementById("case-solution").innerText = "A Secure, Scalable Cyber Platform that eliminates the learning curve for most officers and personnel creates a more effective and efficient work force. Most people are familiar and competent on some level of social media platform. Because of this social-cultural dynamic, Opnet has very little learning curve and will be in use and effective almost immediately.​";
@@ -85,6 +110,7 @@ export default {
                 document.getElementById("case-plan").innerHTML = "<li><strong>Mission 1.</strong> Prevent Terrorism and Enhance Security (Direct and Indirect): Goals 1.1, 1.2, 1.3</li><li><strong>Mission 4.</strong> Safeguard and Secure Cyberspace: Goals 4.1, 4.2, 4.3, 4.4</li><li><strong>Mission 5.</strong> Strengthen National Preparedness and Resilience: Goals 5.1, 5.2, 5.3, 5.4</li>";
             }
             if(num == 2) {
+                this.case2 = true;
                 document.getElementById("case-title").innerText = "Information & Special Operations";
                 document.getElementById("case-challenge").innerText = "Managing Intelligence/ ILP / Investigations/ Tactical Operations";
                 document.getElementById("case-solution").innerText = "A Secure, Scalable Cyber Platform that eliminates the learning curve for most officers and personnel creates a more effective and efficient work force. Most people are familiar and competent on some level of social media platform. Because of this social-cultural dynamic, Opnet has very little learning curve and will be in use and effective almost immediately.​";
@@ -95,6 +121,7 @@ export default {
                 document.getElementById("case-plan").innerHTML = "<li><strong>Mission 1.</strong> Prevent Terrorism and Enhance Security (Direct and Indirect): Goals 1.1, 1.2, 1.3</li><li><strong>Mission 4.</strong> Safeguard and Secure Cyberspace: Goals 4.1, 4.2, 4.3, 4.4</li><li><strong>Mission 5.</strong> Strengthen National Preparedness and Resilience: Goals 5.1, 5.2, 5.3, 5.4</li> ";
             }
             if(num == 3) {
+                this.case3 = true;
                 document.getElementById("case-title").innerText = "Inter-Agency & Task Force Operations";
                 document.getElementById("case-challenge").innerText = "Inter-Agency and Task Force Operations and Collaboration";
                 document.getElementById("case-solution").innerText = "Secure Cloud-based multi-media collaboration and information sharing is essential to successful task-force operations. Multi-Agency collaboration can now, for the first time in American Law Enforcement history excel and run in real-time with ISM. Eliminate all of the communications barriers, never be behind or have to wonder. Real-time, timely information exchange and operations.";
@@ -105,6 +132,7 @@ export default {
                 document.getElementById("case-plan").innerHTML = "<li><strong>Mission 1.</strong> Prevent Terrorism and Enhance Security (Direct and Indirect): Goals 1.1, 1.2, 1.3</li><li><strong>Mission 4.</strong> Safeguard and Secure Cyberspace: Goals 4.1, 4.2, 4.3, 4.4</li><li><strong>Mission 5.</strong> Strengthen National Preparedness and Resilience: Goals 5.1, 5.2, 5.3, 5.4</li>";
             }
             if(num == 4) {
+                this.case4 = true;
                 document.getElementById("case-title").innerText = "Exercise Support and Collaboration";
                 document.getElementById("case-challenge").innerText = "Collaboration for Exercise Support and Training";
                 document.getElementById("case-solution").innerText = "Secure Cloud-based multi-media collaboration provided by Intelligent Social Media can change everything. Real-time collaboration, information sharing, multi-media tools, such as video conference, broadcast, media sharing, document storage and sharing, tactical mapping (on-the-fly) and much more are only a click away.";
@@ -115,6 +143,7 @@ export default {
                 document.getElementById("case-plan").innerHTML = "<li><strong>Mission 1.</strong> Prevent Terrorism and Enhance Security (Direct and Indirect): Goals 1.1, 1.2, 1.3</li><li><strong>Mission 4.</strong> Safeguard and Secure Cyberspace: Goals 4.1, 4.2, 4.3, 4.4</li><li><strong>Mission 5.</strong> Strengthen National Preparedness and Resilience: Goals 5.1, 5.2, 5.3, 5.4</li>";
             }
             if(num == 5) {
+                this.case5 = true;
                 document.getElementById("case-title").innerText = "Real-Time Information Sharing";
                 document.getElementById("case-challenge").innerText = "DHS Mission Areas. Real-Time Information Sharing";
                 document.getElementById("case-solution").innerText = "Secure Cloud-based multi-media collaboration provided by Intelligent Social Media can change everything. Real-time collaboration, information sharing, multi-media tools, such as video conference, broadcast, media sharing, document storage and sharing, tactical mapping (on-the-fly) and much more are only a click away.";
@@ -125,6 +154,7 @@ export default {
                 document.getElementById("case-plan").innerHTML = "<li>National Incident Management System / Incident Command System​</li><li>National Emergency Communications Plan & SAFECOM​</li><li>2014-2018 Homeland Security Strategic Plan​</li><li>9/11 Commission Report / FirstNet​</li><li>DHS S&T International Forum to Advance First Responders</li><li>Homeland Security, Mobile Application Adoption Best Practices​</li>";
             }
             if(num == 6) {
+                this.case6 = true;
                 document.getElementById("case-title").innerText = "Cyber-Border";
                 document.getElementById("case-challenge").innerText = "Real-Time Secure U.S. Information Sharing";
                 document.getElementById("case-solution").innerText = "A Secure, Scalable Cyber Platform that eliminates the learning curve for most officers and personnel creates a more effective and efficient work force. Most people are familiar and competent on some level of social media platform. Because of this social-cultural dynamic, Opnet has very little learning curve and will be in use and effective almost immediately.​";
@@ -135,6 +165,7 @@ export default {
                 document.getElementById("case-plan").innerHTML = "<li><strong>Mission 2.</strong> Secure and Manage our Borders: Goals 2.1, 2.3</li><li><strong>Mission 3.</strong> Enforce and Administer Our Immigration Laws</li><li><strong>Mission 4.</strong> Safeguard and Secure Cyberspace: Goals 4.1, 4.2, 4.3, 4.4</li>";
             }
             if(num == 7) {
+                this.case7 = true;
                 document.getElementById("case-title").innerText = "Franchises";
                 document.getElementById("case-challenge").innerText = "Managing Mission-Critical Information for Business Continuity";
                 document.getElementById("case-solution").innerText = "A Secure, Scalable Cyber Platform that eliminates the learning curve for most officers and personnel creates a more effective and efficient work force. Most people are familiar and competent on some level of social media platform. Because of this social-cultural dynamic, Opnet has very little learning curve and will be in use and effective almost immediately.​";
@@ -273,7 +304,9 @@ export default {
     .container {
         align-self: center;
         position: relative;
-        background-color: color(tColor);
+        // background-color: color(tColor);
+        background-image: url("../assets/CS_BG.jpg");
+        background-size: cover;
         width: 85vw;
         margin: 15vh 0 5vh 0;
         border-radius: 20px;
@@ -297,6 +330,10 @@ export default {
             display: flex;
             flex-flow: column;
             justify-content: center;
+
+            @include medium {
+                top: 5vh; 
+            }
 
             div {
                 background-color: color(sColor);
@@ -351,20 +388,36 @@ export default {
         font-weight: 800;
         margin: 4vh;
     }
+    #case-image {
+        height: 10vh;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 4vh;
+
+        img {
+            height: 100%;
+        }
+    }
     #case-challenge {
         margin-bottom: 4vh;
+    }
+    #case-input {
+        background-color: color(pColor);
+        padding: 15% 10% 10% 10%;
+        margin-bottom: 4vh;
+        color: color(tColor);
+        font-weight: normal;
+        clip-path: polygon(50% 10%, 100% 0, 100% 90%, 50% 100%, 0 90%, 0 0);
+
+        @include medium {
+            padding: 5%;
+            clip-path: none;
+            border-radius: 20px;
+        }
     }
     #case-solution {
         margin-bottom: 4vh;
         color: #000;
-    }
-    #case-input {
-        background-color: color(action);
-        border-radius: 20px;
-        padding: 5%;
-        margin-bottom: 4vh;
-        color: color(tColor);
-        font-weight: normal;
     }
     #case-content {
         color: color(action);

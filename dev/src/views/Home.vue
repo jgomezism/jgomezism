@@ -487,6 +487,7 @@ export default {
                     letter-spacing: 3px;
                     color: color(pColor);
                     text-align: center;
+                    padding: 0 5vw;
                     margin-bottom: 2vh;
                 }
                 .description {
