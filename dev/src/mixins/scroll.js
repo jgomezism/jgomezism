@@ -66,14 +66,15 @@ export const scroll = {
         const timeFunction = easings[easing](time);
         window.scroll(0, Math.ceil((timeFunction * (destinationOffsetToScroll - start)) + start));
     
-        if (window.pageYOffset === destinationOffsetToScroll) {
-          if (callback) {
-            callback();
-          }
-          return;
+        if (window.pageYOffset != destinationOffsetToScroll) {
+          requestAnimationFrame(scroll);
         }
-    
-        requestAnimationFrame(scroll);
+        
+        if (callback) {
+          callback();
+        }
+        
+        return;
       }
     
       scroll();
