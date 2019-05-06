@@ -304,7 +304,7 @@ export default {
     .container {
         align-self: center;
         position: relative;
-        // background-color: color(tColor);
+        background-color: color(tColor);
         background-image: url("../assets/CS_BG.jpg");
         background-size: cover;
         width: 85vw;
